@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import org.w3c.dom.Text;
 
@@ -16,18 +17,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private EditText editTextLadoTres;
     private EditText editTextResultado;
     private Button buttonResultado;
+    private ImageView triangulo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        editTextLadoUm = findViewById(R.id.editTextLadoUm);
-        editTextLadoDois = findViewById(R.id.editTextLadoDois);
-        editTextLadoTres = findViewById(R.id.editTextLadoTres);
-        editTextResultado = findViewById(R.id.editTextResultado);
-        buttonResultado = (Button) findViewById(R.id.buttonExibir);
+        editTextLadoUm = findViewById(R.id.editTextLadoUm); //localiza o id do widget.
+        editTextLadoDois = findViewById(R.id.editTextLadoDois); //localiza o id do widget.
+        editTextLadoTres = findViewById(R.id.editTextLadoTres); //localiza o id do widget.
+        editTextResultado = findViewById(R.id.editTextResultado); //localiza o id do widget.
+        buttonResultado = (Button) findViewById(R.id.buttonExibir); //localiza o id do widget.
+        triangulo = findViewById(R.id.imageView); //localiza o id do widget.
         buttonResultado.setOnClickListener(this);
+
     }
 
     @Override
@@ -39,12 +43,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if (valor1 == valor2 && valor2 == valor3) {
             editTextResultado.setText("Triângulo Equilátero");
+            triangulo.setImageResource(R.drawable.triangulo_equilatero);
         } else {
             if ((valor1 == valor2) || (valor1 == valor3) || (valor2 == valor3)) {
                 editTextResultado.setText("Triângulo Isosceles");
+                triangulo.setImageResource(R.drawable.triangulo_isoceles);
             } else {
                 if ((valor1 != valor2) && (valor1 != valor3) && (valor2 != valor3)) {
                     editTextResultado.setText("Triângulo Escaleno");
+                    triangulo.setImageResource(R.drawable.triangulo_escaleno);
                 }
             }
         }
